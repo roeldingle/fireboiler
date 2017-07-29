@@ -19,11 +19,14 @@
 	<ion-item>
 		<ion-label floating>Email</ion-label>
 		<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+		<ion-icon name="person" item-end></ion-icon>
 	</ion-item>
 
 	<ion-item>
 		<ion-label floating>Password</ion-label>
 		<ion-input type="password" [(ngModel)]="user.password" autocomplete="new-password"></ion-input>
+		<ion-icon name="lock" item-end></ion-icon>
+
 	</ion-item>
 	
 	<div style="margin-top:10%;text-align:right">

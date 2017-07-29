@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -21,15 +21,22 @@ export class LoginPage {
 
   user = {} as User;
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
   }
 
   async login(user: User){
+
+    let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+
+    loading.present();
 
   	try{
   		const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
   		if(result){
   			this.navCtrl.setRoot(HomePage);
+        loading.dismiss();
   		}
   	}catch(e){
   		console.log(e);
