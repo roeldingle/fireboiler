@@ -10,6 +10,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 
 
 import { MyApp } from './app.component';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
@@ -20,6 +21,7 @@ import { ListPage } from '../pages/list/list';
 @NgModule({
   declarations: [
     MyApp,
+    WelcomePage,
     LoginPage,
     RegisterPage,
     HomePage,
@@ -34,6 +36,7 @@ import { ListPage } from '../pages/list/list';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    WelcomePage,
     LoginPage,
     RegisterPage,
     HomePage,
