@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,14 +19,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Logout', component: null }
+      { title: 'List', component: ListPage }
     ];
 
   }
@@ -44,7 +43,31 @@ export class MyApp {
     if(page.component) {
         this.nav.setRoot(page.component);
     } else {
-        this.nav.setRoot(LoginPage);
+        this.nav.setRoot(WelcomePage);
     }
   }
+
+  logout() {
+    let alert = this.alertCtrl.create({
+    title: 'Confirm Log Out',
+    message: 'Are you sure you want to log out?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Log Out',
+        handler: () => {
+          this.nav.setRoot(WelcomePage);
+        }
+      }
+    ]
+  });
+  alert.present();
+  }
+
 }
