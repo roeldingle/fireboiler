@@ -33,7 +33,7 @@ export class LoginPage {
 
     let loading = this.loadingCtrl.create({
         content: 'Please wait...'
-      });
+    });
 
     loading.present();
 
