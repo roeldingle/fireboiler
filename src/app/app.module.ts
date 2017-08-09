@@ -7,6 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseServiceProvider} from '../providers/firebase-service/firebase-service';
+import firebase from 'firebase';
+
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 
@@ -15,6 +19,11 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
+
+import { MemberPage } from '../pages/member/member';
+import { MemberCreatePage } from '../pages/member/create/create';
+import { MemberDetailPage } from '../pages/member/detail/detail';
+
 import { ListPage } from '../pages/list/list';
 import { UtilitiesProvider } from '../providers/utilities/utilities';
 
@@ -27,6 +36,11 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     LoginPage,
     RegisterPage,
     HomePage,
+
+    MemberPage,
+    MemberDetailPage,
+    MemberCreatePage,
+
     ListPage
   ],
   imports: [
@@ -34,7 +48,8 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    HttpModule,
+    AngularFireDatabaseModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,13 +58,19 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     LoginPage,
     RegisterPage,
     HomePage,
+
+    MemberPage,
+    MemberDetailPage,
+    MemberCreatePage,
+
     ListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UtilitiesProvider
+    UtilitiesProvider,
+    FirebaseServiceProvider
   ]
 })
 export class AppModule {}

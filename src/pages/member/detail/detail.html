@@ -1,0 +1,35 @@
+<style>
+	.item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+</style>
+
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>{{item.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.avatar + ')'">
+  </div>
+
+  <div class="item-detail" padding>
+    <h2>{{item.name}}</h2>
+    <p>{{item.email}}</p>
+  </div>
+
+
+</ion-content>
