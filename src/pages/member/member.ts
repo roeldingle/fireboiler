@@ -107,50 +107,50 @@ export class MemberPage {
   }
 
 
-  updateItem(member){
-    let alert = this.alertCtrl.create({
-      title: 'Song Name',
-      message: "Update the name for this song",
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Name',
-          value: name
-        },
-        {
-          name: 'email',
-          placeholder: 'Email',
-          value: email
-        },
-        {
-          name: 'avatar',
-          placeholder: 'Avatar URL',
-          value: avatar
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
+  // updateItem(member){
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Song Name',
+  //     message: "Update the name for this song",
+  //     inputs: [
+  //       {
+  //         name: 'name',
+  //         placeholder: 'Name',
+  //         value: name
+  //       },
+  //       {
+  //         name: 'email',
+  //         placeholder: 'Email',
+  //         value: email
+  //       },
+  //       {
+  //         name: 'avatar',
+  //         placeholder: 'Avatar URL',
+  //         value: avatar
+  //       }
+  //     ],
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         handler: data => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Save',
+  //         handler: data => {
 
-            this.firebaseService.updateItem("members",member,{
-              name: data.name,
-              email: data.email,
-              avatar: data.avatar
+  //           this.firebaseService.updateItem("members",member,{
+  //             name: data.name,
+  //             email: data.email,
+  //             avatar: data.avatar
 
-            });
+  //           });
 
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   alert.present();
+  // }
 
 }
