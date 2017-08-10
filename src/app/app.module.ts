@@ -24,7 +24,6 @@ import { MemberPage } from '../pages/member/member';
 import { MemberCreatePage } from '../pages/member/create/create';
 import { MemberDetailPage } from '../pages/member/detail/detail';
 
-import { ListPage } from '../pages/list/list';
 import { UtilitiesProvider } from '../providers/utilities/utilities';
 
 
@@ -39,9 +38,7 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 
     MemberPage,
     MemberDetailPage,
-    MemberCreatePage,
-
-    ListPage
+    MemberCreatePage
   ],
   imports: [
     BrowserModule,
@@ -61,9 +58,7 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 
     MemberPage,
     MemberDetailPage,
-    MemberCreatePage,
-
-    ListPage
+    MemberCreatePage
   ],
   providers: [
     StatusBar,

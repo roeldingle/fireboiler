@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, ToastController, AlertController } from 'ionic-angular';
 
 import { MemberDetailPage } from './detail/detail';
 import { MemberCreatePage } from './create/create';
@@ -29,20 +29,27 @@ export class MemberPage {
   	 public navParams: NavParams,
   	 public modalCtrl: ModalController,
   	 public loadingCtrl: LoadingController,
+  	 private toast: ToastController,
+     private alertCtrl: AlertController,
   	 public firebaseService: FirebaseServiceProvider
   	){
 
   	this.load();
   }
 
-  load(){
+  async load(){
+
   	let loading = this.loadingCtrl.create({
         content: 'Please wait...'
     });
-
     loading.present();
 
-    this.itemList = this.firebaseService.getItemList();
+    this.itemList = this.firebaseService.getItemList("members");
+
+    this.itemList.subscribe(()=>{
+    	loading.dismiss();
+    });
+
   }
 
   /**
@@ -64,15 +71,86 @@ export class MemberPage {
 
     addModal.onDidDismiss(item => {
       if (item) {
-        this.firebaseService.addItem(item);
+        this.firebaseService.addItem("members",item);
       }
     })
     addModal.present();
 
   }
 
+
+  /*delete*/
   removeItem(member){
-		this.firebaseService.removeItem(member);
-	}
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm',
+      message: 'Are you sure you want to permanently delete this member?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.firebaseService.removeItem("members",member);
+          }
+        }
+      ]
+    });
+    alert.present();
+
+    
+  }
+
+
+  updateItem(member){
+    let alert = this.alertCtrl.create({
+      title: 'Song Name',
+      message: "Update the name for this song",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Name',
+          value: name
+        },
+        {
+          name: 'email',
+          placeholder: 'Email',
+          value: email
+        },
+        {
+          name: 'avatar',
+          placeholder: 'Avatar URL',
+          value: avatar
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+
+            this.firebaseService.updateItem("members",member,{
+              name: data.name,
+              email: data.email,
+              avatar: data.avatar
+
+            });
+
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 }

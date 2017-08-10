@@ -13,19 +13,24 @@ export class FirebaseServiceProvider {
 
   constructor(public afd: AngularFireDatabase) {}
 
-  getItemList(){
+  getItemList(table){
 
-  	return this.afd.list('/users');
+  	return this.afd.list('/fireboiler/'+table);
   }
 
-  addItem(item){
+  addItem(table,item){
 
-  	return this.afd.list('/users').push(item);
+  	return this.afd.list('/fireboiler/'+table).push(item);
   }
 
-  removeItem(item){
+  removeItem(table,item){
 
-  	return this.afd.list('/users').remove(item);
+  	return this.afd.list('/fireboiler/'+table).remove(item);
+  }
+
+   updateItem(table,item, data){
+
+    return this.afd.list('/fireboiler/'+table).update(item, data);
   }
 
 }

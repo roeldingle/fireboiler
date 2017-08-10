@@ -11,7 +11,11 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export class MemberDetailPage {
   item: any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public firebaseService: FirebaseServiceProvider) {
+  constructor(
+  	public navCtrl: NavController, 
+  	navParams: NavParams, 
+  	public firebaseService: FirebaseServiceProvider
+  	) {
     this.item = navParams.get('item');
   }
 

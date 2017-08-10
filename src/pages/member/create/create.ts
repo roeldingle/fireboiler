@@ -16,7 +16,11 @@ export class MemberCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController, 
+    public viewCtrl: ViewController, 
+    formBuilder: FormBuilder
+    ){
     this.form = formBuilder.group({
       avatar: [''],
       name: ['', Validators.required],
