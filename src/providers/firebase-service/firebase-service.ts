@@ -24,13 +24,12 @@ export class FirebaseServiceProvider {
   }
 
   removeItem(table,item){
-
   	return this.afd.list('/fireboiler/'+table).remove(item);
   }
 
-   updateItem(table,item, data){
+  editItem(table,id,item){
 
-    return this.afd.list('/fireboiler/'+table).update(item, data);
+    return this.afd.list('/fireboiler/'+table).update(id,item);
   }
 
 }

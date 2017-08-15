@@ -21,8 +21,10 @@ import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 
 import { MemberPage } from '../pages/member/member';
-import { MemberCreatePage } from '../pages/member/create/create';
 import { MemberDetailPage } from '../pages/member/detail/detail';
+import { MemberCreatePage } from '../pages/member/create/create';
+import { MemberEditPage } from '../pages/member/edit/edit';
+
 
 import { UtilitiesProvider } from '../providers/utilities/utilities';
 
@@ -38,7 +40,8 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 
     MemberPage,
     MemberDetailPage,
-    MemberCreatePage
+    MemberCreatePage,
+    MemberEditPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 
     MemberPage,
     MemberDetailPage,
-    MemberCreatePage
+    MemberCreatePage,
+    MemberEditPage
   ],
   providers: [
     StatusBar,

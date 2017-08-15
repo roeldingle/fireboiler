@@ -1,31 +1,34 @@
 import { Component, ViewChild } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavController, ViewController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup} from '@angular/forms';
+import { NavController, ViewController, NavParams  } from 'ionic-angular';
 
 
 @Component({
-  selector: 'page-member-create',
-  templateUrl: 'create.html'
+  selector: 'page-member-edit',
+  templateUrl: 'edit.html'
 })
-export class MemberCreatePage {
+export class MemberEditPage {
   // @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-
-  // item: any;
-
+  item: any;
   form: FormGroup;
 
   constructor(
     public navCtrl: NavController, 
     public viewCtrl: ViewController, 
+    navParams: NavParams, 
     formBuilder: FormBuilder
     ){
+
+    this.item = navParams.get('item');
+
     this.form = formBuilder.group({
-      avatar: [''],
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      team: ['', Validators.required]
+      id: [this.item.$key],
+      avatar: [this.item.avatar],
+      name: [this.item.name, Validators.required],
+      email: [this.item.email],
+      team: [this.item.team]
     });
 
     // Watch the form for changes, and
